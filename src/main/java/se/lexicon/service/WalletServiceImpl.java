@@ -50,14 +50,26 @@ public class WalletServiceImpl implements WalletService {
         return result;
     }
 
+
     @Override
     public Player withdraw(int amount, String playerId) {
-        return null;
+        if (playerId == null) throw new IllegalArgumentException("account is should not be null");
+        Player player = playerDao.find(playerId).orElseThrow(IllegalArgumentException::new);
+        if (!player.getAccount().isStatus()) throw new IllegalArgumentException("account is not active");
+
+        Account account = player.getAccount();
+        if (!(account.getBalance() >= amount)) throw new IllegalArgumentException("balance is not enough");
+        account.setBalance(account.getBalance() - amount);
+        player.setAccount(account);
+        return player;
     }
 
     @Override
     public Player findPlayerByAccountId(int accountId) {
-        return null;
+        if (accountId == 0) throw new IllegalArgumentException("account is should not be null");
+        Account findAccount = accountDao.find(accountId).orElseThrow(IllegalArgumentException::new);
+        Player player = playerDao.findByAccountId(findAccount.getId()).orElseThrow(IllegalArgumentException::new);
+        return player;
     }
 
     @Override

@@ -24,12 +24,20 @@ public class PlayerDaoImpl implements PlayerDao {
 
     @Override
     public boolean delete(int playerId) {
-        return false;
+        return players.removeIf(player -> player.getId().equals(playerId));
     }
 
     @Override
     public Player update(Player player) {
-        return null;
+        if (player == null) throw new IllegalArgumentException();
+
+        Optional<Player> findAcc = find(player.getId());
+        Player original = findAcc.orElseThrow(IllegalArgumentException::new);
+        original.setName(player.getName());
+        original.setEmail(player.getEmail());
+        original.setPhone(player.getPhone());
+        original.setAccount(player.getAccount());
+        return original;
     }
 
     @Override
