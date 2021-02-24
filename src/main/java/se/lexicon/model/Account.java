@@ -54,6 +54,10 @@ public class Account {
         return balance;
     }
 
+    // use this function on deposit and withdraw operations
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     @Override
     public boolean equals(Object o) {
