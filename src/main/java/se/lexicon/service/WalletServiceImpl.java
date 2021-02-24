@@ -1,5 +1,7 @@
 package se.lexicon.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.AccountDao;
 import se.lexicon.dao.PlayerDao;
 import se.lexicon.model.Account;
@@ -7,15 +9,18 @@ import se.lexicon.model.Player;
 
 import java.util.Optional;
 
+@Component("walletService")
 public class WalletServiceImpl implements WalletService {
 
     private PlayerDao playerDao;
     private AccountDao accountDao;
 
+    @Autowired
     public void setPlayerDao(PlayerDao playerDao) {
         this.playerDao = playerDao;
     }
 
+    @Autowired
     public void setAccountDao(AccountDao accountDao) {
         this.accountDao = accountDao;
     }

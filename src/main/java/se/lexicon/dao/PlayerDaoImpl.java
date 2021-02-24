@@ -1,5 +1,6 @@
 package se.lexicon.dao;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.PlayerIdGenerator;
 import se.lexicon.model.Player;
 
@@ -7,6 +8,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Component("playerDao")
 public class PlayerDaoImpl implements PlayerDao {
 
     private Set<Player> players = new HashSet<>();

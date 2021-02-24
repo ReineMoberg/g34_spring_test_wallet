@@ -1,12 +1,13 @@
 package se.lexicon.dao;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.AccountSequencer;
 import se.lexicon.model.Account;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
+@Component("accountDao")
 public class AccountDaoImp implements AccountDao {
 
     private Set<Account> accounts = new HashSet<>();
