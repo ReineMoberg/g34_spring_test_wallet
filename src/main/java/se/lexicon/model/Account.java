@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Account {
 
     private int id;
-    private boolean status;
+    private boolean status; // default = false
     private AccountType accountType;
     private int balance;
 
@@ -14,16 +14,14 @@ public class Account {
     }
 
     // select data
-    public Account(int id, boolean status, AccountType accountType, int balance) {
+    public Account(int id, AccountType accountType, int balance) {
         this.id = id;
-        this.status = status;
         this.accountType = accountType;
         this.balance = balance;
     }
 
     // insert data
-    public Account(boolean status, AccountType accountType, int balance) {
-        this.status = status;
+    public Account( AccountType accountType, int balance) {
         this.accountType = accountType;
         this.balance = balance;
     }
@@ -56,9 +54,6 @@ public class Account {
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
 
     @Override
     public boolean equals(Object o) {
